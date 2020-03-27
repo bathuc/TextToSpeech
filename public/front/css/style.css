@@ -1,0 +1,12 @@
+.error, .custom_error {
+	color: #dc3545;
+}
+
+/*parsley*/
+.parsley-errors-list {
+	padding-top: .3125rem;
+	padding-left: 0;
+	list-style: none;
+	font-size: .875rem;
+	color: #ef5350;
+}
