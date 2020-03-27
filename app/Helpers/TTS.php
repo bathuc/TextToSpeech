@@ -17,7 +17,7 @@ class TTS
 {
     public static function textToSpeech($textContent = null, $fileName = 'output')
     {
-        $credentialPath = Storage::disk('secret')->path('textToSpeech.json');
+        $credentialPath = public_path('key/textToSpeech.json');
         $client = new TextToSpeechClient([
             'credentials' => $credentialPath
         ]);
