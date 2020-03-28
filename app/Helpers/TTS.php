@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\File;
 
 class TTS
 {
+    public static function correct_encoding($text) {
+        $current_encoding = mb_detect_encoding($text, 'auto');
+        $text = iconv($current_encoding, 'UTF-8', $text);
+        return $text;
+    }
+
     public static function textToSpeech($textContent = null, $fileName = 'output')
     {
         $credentialPath = Storage::disk('secret')->path('textToSpeech.json');
@@ -22,6 +28,7 @@ class TTS
             'credentials' => $credentialPath
         ]);
 
+        $textContent = self::correct_encoding($textContent);
         // sets text to be synthesised
         $synthesisInputText = (new SynthesisInput())
             ->setText($textContent);
